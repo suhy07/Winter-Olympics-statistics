@@ -7,7 +7,7 @@ export const  constantRoutes= [
     {
       path: '/',
       name: 'HomePage',
-      component:  () => import('@/views/homepages/index'),
+      component:  () => import('@/views/homepage/index'),
       meta:{
         title:'主页'
       }
@@ -15,7 +15,23 @@ export const  constantRoutes= [
     {
       path: '/homepage',
       name: 'HomePage',
-      component:  () => import('@/views/homepages/index'),
+      component:  () => import('@/views/homepage/index'),
+      meta:{
+        title:'主页'
+      }
+    },
+    {
+      path: '/map',
+      name: 'map',
+      component:  () => import('@/components/base-map'),
+      meta:{
+        title:'主页'
+      }
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component:  () => import('@/views/homepage/components/h-goldlist'),
       meta:{
         title:'主页'
       }

@@ -15,24 +15,24 @@
 <script>
 // 如需扩张更多省市,在此处引入对应的地图JSON数据
 // 
-import world from '../../static/mapData/world.json'
-import china from '../../static/mapData/china.json'
-import anhui from '../../static/mapData/anhui.json'
-import aomen from '../../static/mapData/aomen.json'
-import fujian from '../../static/mapData/fujian.json'
-import gansu from '../../static/mapData/gansu.json'
-import guangdong from '../../static/mapData/guangdong.json'
-import guangxi from '../../static/mapData/guangxi.json'
+import world from '../datas/DataMap/world.json'
+import china from '../datas/DataMap/china.json'
+import anhui from '../datas/DataMap/anhui.json'
+import aomen from '../datas/DataMap/aomen.json'
+import fujian from '../datas/DataMap/fujian.json'
+import gansu from '../datas/DataMap/gansu.json'
+import guangdong from '../datas/DataMap/guangdong.json'
+import guangxi from '../datas/DataMap/guangxi.json'
 
 
 
 
 
-import beijing from '../../static/mapData/beijing.json'
-import tianjin from '../../static/mapData/tianjin.json'
-import shanghai from '../../static/mapData/shanghai.json'
-import chongqing from '../../static/mapData/chongqing.json'
-import CQjiangbei from '../../static/mapData/CQ_jiangbei.json'
+import beijing from '../datas/DataMap/beijing.json'
+import tianjin from '../datas/DataMap/tianjin.json'
+import shanghai from '../datas/DataMap/shanghai.json'
+import chongqing from '../datas/DataMap/chongqing.json'
+import CQjiangbei from '../datas/DataMap/CQ_jiangbei.json'
 export default {
   name: "base-map", 
   data() {
