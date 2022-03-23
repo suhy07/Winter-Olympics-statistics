@@ -34,7 +34,7 @@ import shanghai from '../../static/mapData/shanghai.json'
 import chongqing from '../../static/mapData/chongqing.json'
 import CQjiangbei from '../../static/mapData/CQ_jiangbei.json'
 export default {
-  name: "HelloWorld", 
+  name: "base-map", 
   data() {
     return {
       value: "world",

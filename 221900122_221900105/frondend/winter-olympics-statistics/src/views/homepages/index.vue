@@ -1,17 +1,19 @@
 <template> 
-    <el-container>
-        <myhead/>
-    </el-container>
-
+    <div>
+        <base-head/>
+        <base-nav/>
+    </div>
 </template>
 <script>
-import myhead from '@/components/Head'
+import BaseHead from '@/components/base-head'
+import BaseNav from '@/components/base-nav'
 export default{
     data() {
         return {}
     },
     components: {
-        myhead
+        BaseHead,
+        BaseNav
     }
 }
 </script>

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
 
@@ -9,11 +8,17 @@ export const  constantRoutes= [
       path: '/',
       name: 'HomePage',
       component:  () => import('@/views/homepages/index'),
+      meta:{
+        title:'主页'
+      }
     },
     {
       path: '/homepage',
       name: 'HomePage',
       component:  () => import('@/views/homepages/index'),
+      meta:{
+        title:'主页'
+      }
     },
 ]
 
