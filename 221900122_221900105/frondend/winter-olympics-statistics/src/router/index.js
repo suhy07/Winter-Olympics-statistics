@@ -7,14 +7,8 @@ Vue.use(Router)
 export const  constantRoutes= [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld,
-      meta: { 
-        title: '项目列表', 
-        keepAlive: true, // 需要被缓存
-        icon: 'list', 
-        noCache: true 
-      }
+      name: 'HomePage',
+      component:  () => import('@/views/homepages/index'),
     },
     {
       path: '/homepage',
