@@ -1,67 +1,63 @@
 <template>
-  <div class="hello">
+  <div class="map-container">
     <div id="map"></div>
-    <el-select v-model="value" placeholder="请选择">
-      <el-option
-        v-for="(items,index) in mapData"
-        :key="index"
-        :label="items.name"
-        :value="items.name"
-      ></el-option>
-    </el-select>
-    
+      <div class="map-card-medallist">
+        <div class="map-card-countryname">
+          <span>{{country}}</span>
+        </div>
+        <div class="map-card-rank">
+          <span>金牌榜第{{rank}}名</span>
+        </div>
+        <div class="map-card-gold">
+          <span class="map-card-text">金</span>
+          <span class="map-card-text">{{gold}}</span>
+          <img class="map-card-img map-card-img-gold" src="@/assets/gold.png"/>
+        </div>
+        <div class="map-card-gray">
+          <span class="map-card-text">银</span>
+          <span class="map-card-text">{{gray}}</span>
+          <img class="map-card-img map-card-img-gray" src="@/assets/gray.png"/>
+        </div>
+        <div class="map-card-bronze">
+          <span class="map-card-text">铜</span>
+          <span class="map-card-text">{{bronze}}</span>
+          <img class="map-card-img map-card-img-bronze" src="@/assets/bronze.png"/>
+        </div>
+      </div>
+    <div class="map-tip" @click="test">
+      <div class="map-tip-radius map-tip1">&nbsp;</div>
+      <div class="map-tip-radius map-tip2">&nbsp;</div>
+      <div class="map-tip-radius map-tip3">&nbsp;</div>
+      <div class="map-tip-radius map-tip4">&nbsp;</div>
+      <div class="map-tip-radius map-tip5">&nbsp;</div>
+    </div>
+
   </div>
 </template>
 <script>
+import Vue from 'vue';
 // 如需扩张更多省市,在此处引入对应的地图JSON数据
 // 
 import world from '../datas/DataMap/world.json'
-import china from '../datas/DataMap/china.json'
-import anhui from '../datas/DataMap/anhui.json'
-import aomen from '../datas/DataMap/aomen.json'
-import fujian from '../datas/DataMap/fujian.json'
-import gansu from '../datas/DataMap/gansu.json'
-import guangdong from '../datas/DataMap/guangdong.json'
-import guangxi from '../datas/DataMap/guangxi.json'
-
-
-
-
-
-import beijing from '../datas/DataMap/beijing.json'
-import tianjin from '../datas/DataMap/tianjin.json'
-import shanghai from '../datas/DataMap/shanghai.json'
-import chongqing from '../datas/DataMap/chongqing.json'
-import CQjiangbei from '../datas/DataMap/CQ_jiangbei.json'
 export default {
   name: "base-map", 
   data() {
     return {
+      country: '中国',
+      rank: 3,
+      gold: 9,
+      gray: 4,
+      bronze: 2,
       value: "world",
-      myChart:null,
+      map:null,
     //   注册地图json
        jsonMap: {
         'world':world,
-        '中国':china,
-        '北京': beijing,
-        '天津': tianjin,
-        '上海': shanghai,
-        '重庆': chongqing,
-        '安徽':anhui,
-        '澳门':aomen,
-        '福建':fujian,
-        '甘肃':gansu,
-        '广东':guangdong,
-        '广西':guangxi,
-
-
-
-        '江北区':CQjiangbei
         },
         // 全球数据
     worldData :[
-        {name: '美国', gold: 46, silver: 29, copper: 29, value: 104},
-        {name: '中国', gold: 38, silver: 27, copper: 23, value: 88},
+        {name: '美国', abbr:'USA', rank: 2 , gold: 46, silver: 29, copper: 29, value: 104},
+        {name: '中国', gold: 38, silver: 27, copper: 23, value: 88,},
         {name: '英国', gold: 29, silver: 17, copper: 19, value: 65},
         {name: '俄罗斯', gold: 24, silver: 25, copper: 33, value: 82},
         {name: '韩国', gold: 13, silver: 8, copper: 7, value: 28},
@@ -367,169 +363,6 @@ nameMap : {
     'Kosovo':'科索沃',
     'Republic of Serbia':'塞尔维亚',
 },
-// 中国数据
-chinaData:[
-    {name: '北京',value: Math.round(Math.random()*100)},
-    {name: '天津',value: Math.round(Math.random()*100)},
-    {name: '上海',value: Math.round(Math.random()*100)},
-    {name: '重庆',value: Math.round(Math.random()*100)},
-    {name: '河北',value: Math.round(Math.random()*100)},
-    {name: '河南',value: Math.round(Math.random()*100)},
-    {name: '云南',value: Math.round(Math.random()*100)},
-    {name: '辽宁',value: Math.round(Math.random()*100)},
-    {name: '黑龙江',value: Math.round(Math.random()*100)},
-    {name: '湖南',value: Math.round(Math.random()*100)},
-    {name: '安徽',value: Math.round(Math.random()*100)},
-    {name: '山东',value: Math.round(Math.random()*100)},
-    {name: '新疆',value: Math.round(Math.random()*100)},
-    {name: '江苏',value: Math.round(Math.random()*100)},
-    {name: '浙江',value: Math.round(Math.random()*100)},
-    {name: '江西',value: Math.round(Math.random()*100)},
-    {name: '湖北',value: Math.round(Math.random()*100)},
-    {name: '广西',value: Math.round(Math.random()*100)},
-    {name: '甘肃',value: Math.round(Math.random()*100)},
-    {name: '山西',value: Math.round(Math.random()*100)},
-    {name: '内蒙古',value: Math.round(Math.random()*100)},
-    {name: '陕西',value: Math.round(Math.random()*100)},
-    {name: '吉林',value: Math.round(Math.random()*100)},
-    {name: '福建',value: Math.round(Math.random()*100)},
-    {name: '贵州',value: Math.round(Math.random()*100)},
-    {name: '广东',value: Math.round(Math.random()*100)},
-    {name: '青海',value: Math.round(Math.random()*100)},
-    {name: '西藏',value: Math.round(Math.random()*100)},
-    {name: '四川',value: Math.round(Math.random()*100)},
-    {name: '宁夏',value: Math.round(Math.random()*100)},
-    {name: '海南',value: Math.round(Math.random()*100)},
-    {name: '台湾',value: Math.round(Math.random()*100)},
-    {name: '香港',value: Math.round(Math.random()*100)},
-    {name: '澳门',value: Math.round(Math.random()*100)}
-        ],
-        // 北京数据
-beijingData:[
-    {name: '东城区',value: 18163,},
-    {name: '西城区',value: 22036,},
-    {name: '海淀区',value: 39},
-    {name: '朝阳区',value: 48},
-    {name: '石景山区',value: 15},
-    {name: '大兴区',value: 26},
-    {name: '门头沟区',value: 11},
-    {name: '昌平区',value: 20},
-    {name: '通州区',value: 51},
-    {name: '房山区',value: 23},
-    {name: '丰台区',value: 23}, 
-    {name: '顺义区',value: 17}, 
-    {name: '怀柔区',value: 21}, 
-    {name: '密云区',value: 18}, 
-    {name: '延庆区',value: 22}, 
-    {name: '平谷区',value: 16}
-        ],  
-        // 重庆数据
-chongqingData:[
-    {name: '万州区',value: 56}, 
-    {name: '开州区',value: 18},
-    {name: '北碚区',value: 18},
-    {name: '南川区',value: 10},
-    {name: '忠县',value: 15},
-    {name: '云阳县',value: 18},
-    {name: '两江新区',value: 13}, 
-    {name: '长寿区',value: 12}, 
-    {name: '石柱土家族自治县',value: 12},
-    {name: '酉阳土家族苗族自治县',value: 12}, 
-    {name: '大渡口区',value: 7}, 
-    {name: '渝北区',value: 12}, 
-    {name: '江北区',value: 18}, 
-    {name: '九龙坡区',value: 15}, 
-    {name: '合川区',value: 9}, 
-    {name: '垫江县',value: 13}, 
-    {name: '巫山县',value: 7},
-    {name: '巫溪县',value: 11}, 
-    {name: '綦江区',value: 10}, 
-    {name: '璧山区',value: 8}, 
-    {name: '奉节县',value: 9}, 
-    {name: '永川区',value: 3}, 
-    {name: '丰都县',value: 6}, 
-    {name: '江津区',value: 3}, 
-    {name: '铜梁区',value: 7}, 
-    {name: '潼南区',value: 4}, 
-    {name: '涪陵区',value: 2}, 
-    {name: '巴南区',value: 3}, 
-    {name: '大足区',value: 7}, 
-    {name: '梁平县',value: 3},
-    {name: '城口县',value: 2}, 
-    {name: '秀山土家族苗族自治县',value: 1}, 
-    {name: '黔江区',value: 2}, 
-    {name: '南岸区',value: 7}, 
-    {name: '武隆县',value: 1}, 
-    {name: '渝中区',value: 13}, 
-    {name: '荣昌区',value: 7}, 
-    {name: '沙坪坝区',value: 2}, 
-    {name: '彭水苗族土家族自治县',value: 2}
-        ],
-        // 上海数据
-shanghaiData:[
-    {name: '黄浦区',value: 219}, 
-    {name: '徐汇区',value: 339}, 
-    {name: '长宁区',value: 412}, 
-    {name: '静安区',value: 429}, 
-    {name: '普陀区',value: 389}, 
-    {name: '闸北区',value: 352}, 
-    {name: '虹口区',value: 329}, 
-    {name: '杨浦区',value: 532}, 
-    {name: '闵行区',value: 299}, 
-    {name: '宝山区',value: 139}, 
-    {name: '嘉定区',value: 440}, 
-    {name: '浦东新区',value: 89}, 
-    {name: '金山区',value: 652}, 
-    {name: '松江区',value: 415}, 
-    {name: '青浦区',value: 329}, 
-    {name: '奉贤区',value: 752}, 
-    {name: '崇明区',value: 399}
-         ],
-        //  天津数据
-tianjinData:[
-    {name:'和平区', value: 199},
-    {name:'河东区', value: 39},         
-    {name:'河西区', value: 152},
-    {name:'南开区', value: 299},
-    {name:'河北区', value: 89},
-    {name:'红桥区', value: 52},
-    {name:'塘沽区', value: 9},
-    {name:'汉沽区', value: 352},
-    {name:'大港区', value: 99},
-    {name:'东丽区', value: 39},
-    {name:'西青区', value: 480},
-    {name:'津南区', value: 481},
-    {name:'北辰区', value: 482},
-    {name:'武清区', value: 483},
-    {name:'宝坻区', value: 484},
-    {name:'宁河区', value: 485},
-    {name:'静海区', value: 486},
-    {name:'蓟州区', value: 487},
-    {name:'滨海新区', value: 487},
-            ],
-            // 江北区
-            jiangbeiData:[{
-                name:'江北区',value:80
-            }],
-            // 下拉框
-mapData: [
-    { name: "world", value: 10 },
-    { name: "中国", value: 20 },
-    { name: "安徽", value:30 },
-    { name: "澳门", value:30 },
-    { name: "福建", value:30 },
-    { name: "甘肃", value:30 },
-    { name: "广东", value:30 },
-    { name: "广西", value:30 },
-
-
-
-    { name: "北京", value:30 },
-    { name: "天津", value:40},
-    { name: "上海", value: 50 },
-    { name: "重庆", value:60} ,
-    {name:'江北区',value:70}
-            ]
     };
   },
   created(){
@@ -540,68 +373,170 @@ mapData: [
   },
    mounted(){
     //    初始化地图
-     this.chinaConfigure(this.value);
+     this.mapConfigure(this.value);
   },
 //   更新数据
-  watch:{
-    value(newVal){
-      this.myChart.dispose();
-      this.chinaConfigure(this.value);
-    }
-  },
    beforeDestroy() {
-    if (!this.myChart) {
+    if (!this.map) {
       return;
     }
-    this.myChart.dispose();
-    this.myChart = null;
+    this.map.dispose();
+    this.map = null;
   },
   methods:{
-    chinaConfigure(area) {
-         this.myChart = this.$echarts.init(document.getElementById("map")); //这里是为了获得容器所在位置        
-         window.onresize = this.myChart.resize;
-         let option={ // 进行相关配置
-          backgroundColor: "#02AFDB",
-          tooltip: {}, // 鼠标移到图里面的浮动提示框
+    mapConfigure(area) {
+      this.map = this.$echarts.init(document.getElementById("map")); //这里是为了获得容器所在位置        
+      window.onresize = this.map.resize;
+      let option={ // 进行相关配置
+        tooltip: {
+        trigger: 'item',
+        formatter: function(params) {
+        var res = params.name+'<br/>'+"金牌："+params.data.gold+'<br/>'+"银牌："
+        +params.data.silver+'<br/>'+"铜牌："+params.data.copper+'<br/>';
+        return res;}
+          }, // 鼠标移到图里面的浮动提示框
           visualMap: {
-            // max: 110,
-            calculable: true,
+            show:false,
+            min: 0,
+            max: 30,
+            calculable: false,
             inRange: {
-                color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
+                color: ['#F2F2F2','#81ECEC','#74B9FF','#55EFC4','#A29BFE','#0984E3']
               }
                   },
+
         series: [{
         type: 'map',
         map: area,
-        data: area=='world'?this.worldData:area=='中国'?this.chinaData:area=='重庆'?this.chongqingData:area=='北京'?this.beijingData:area=='上海'?this.shanghaiData:area=='天津'?this.tianjinData:area=='江北区'?this.jiangbeiData:[],
-        nameMap: area=='world'?this.nameMap:{}
+        data: this.worldData,
+        nameMap: this.nameMap,
+        label: {
+                    show:false,
+                    normal: {
+                        show: false,
+                        color:"#fff",
+                    },
+                    emphasis: {
+                        show: true,
+                        fontSize:16,
+                        color:"#fff"
+
+                    }
+                },
+        itemStyle: {
+                    normal: {
+                        areaColor: '#F2F2F2',
+                        borderColor: '#FFF'
+                    },
+                    emphasis: {//鼠标移入高亮显颜色
+                        areaColor: '#E056FD'
+                    }
+         }
     }]
-        }
-        this.myChart.setOption(option,true);
-        this.myChart.on('click', params => { // 点击函数
-        this.value=params.name
-        this.myChart.setOption(option,true);
-        }) 
-      },
+        };
+        var _self=this;
+        this.map.setOption(option,true);
+        this.map.on('mouseover',function(params){
+          _self.country=params.name;
+          _self.rank=params.rank;
+          _self.gold=params.data.gold;
+          _self.gray=params.data.silver;
+          _self.bronze=params.data.copper;
+        })
+    },
+    test(){
+      this.country="测试"
+      console.log("测试")
+    }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.hello {
+.map-container {
+  background-image: url("../assets/MapBackground.png");
+  background-size: 100% 100%;
   position: relative;
   width: 100%;
   height: 100%;
 }
->>>.el-select{
-  position: absolute;
-  left: 20px;
-  top:20px;
-}
 #map{
   position: absolute;
+  top:-25%;
   width: 100%;
-  height: 100%;
+  height: 120%;
+}
+.map-card-medallist{
+  position: relative;
+  padding: 2% 0px 0px 2%;
+  top: 61%;
+  left: 65%;
+  width: 19%;
+  height: 35%;
+  background: inherit;
+  background-color: rgba(255, 255, 255, 1);
+  border-width: 1px;
+  border-radius: 36px;
+  box-shadow: 0px 0px 10px rgb(170 170 170 / 35%);
+  border-style: dotted;
+  border-color: rgb(0, 0, 0);
+  background: #FFF;
+}
+.map-card-countryname{
+  border-width: 0px;
+  background: inherit;
+  background-color: rgba(255, 255, 255, 0);
+  font-family: 'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 25px;
+  letter-spacing: 2px;
+}
+.map-card-rank{
+  border-width: 0px;
+  display: flex;
+  font-size: 22px;
+  letter-spacing: 1px;
+  color: #AAAAAA;
+  padding: 20px 0 13px 0;
+}
+.map-card-text{
+  position: relative;
+  top: -10px;
+  padding: 0 30px 0 0;
+  font-family: 'Arial Normal', 'Arial', sans-serif;
+  font-style: normal;
+  font-size: 25px;
+  color: #333333;
+  text-align: center;
+}
+.map-tip{
+  position: relative;
+  top: 218px;
+  left: 180px;
+}
+.map-tip-radius{
+  width: 30px;
+  height: 30px;
+  margin: 0 0 25px 0;
+  background-color: #75BFE2;
+  border-width: 1px;
+  border-radius: 36px;
+}
+.map-tip1{
+  background-color: #75BFE2;
+}
+.map-tip2{
+  background-color: #71ADE8;
+}
+.map-tip3{
+  background-color: #55EFC4;
+}
+.map-tip4{
+  background-color: #A29BFE;
+}
+.map-tip5{
+  background-color: #0984E3;
 }
 </style>

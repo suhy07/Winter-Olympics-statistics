@@ -1,10 +1,10 @@
 <template>
     <div class="h-goldlist-container">
-        <div class="h-goldlist-card">
+         <div v-for="i in count" class="h-goldlist-card">
           <el-row>
             <el-col :span="6">
               <div class="h-goldlist-card-num">
-                <span class="h-goldlist-text h-goldlist-card-num-text">1</span>
+                <span class="h-goldlist-text h-goldlist-card-num-text">{{i}}</span>
               </div>
             </el-col>
             <el-col :span="18">
@@ -22,22 +22,88 @@
             <img  class="h-goldlist-card-medal-img h-goldlist-card-medal-img-bronze" src="@/assets/bronze.png"/>
             <span class="h-goldlist-text h-goldlist-card-medal-text h-goldlist-card-medal-text-bronze">1</span>
           </div>
-        </div>
+         </div>
     </div>
 </template>
 
 <script>
   export default {
     data () {
-        return {}
+      return {
+        count: 10,
+        loading: false
+      }
     }
   }
 </script>
 <style>
+
+.h-goldlist-container {
+  overflow: scroll;
+  -ms-overflow-style: none;
+  /** //IE 10+*/
+  overflow: -moz-scrollbars-none;
+  /** Firefox */
+}
+
+/*整个滚动条样式 当width:0;或display:none;时，滚动条不显示*/
+/* .h-goldlist-container      ::-webkit-scrollbar {
+  display: none;
+} */
+
+/*整个滚动条样式*/
+.h-goldlist-container::-webkit-scrollbar {
+  width: 8px - 1px;
+  height: 8px;
+  background: transparent;
+}
+
+/*设置滚动条上的滚动滑块样式*/
+.h-goldlist-container::-webkit-scrollbar-thumb {
+  background: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/*鼠标位于内容上时，滚动条样式*/
+.h-goldlist-container:hover::-webkit-scrollbar {
+  width: 8px - 1px;
+  height: 8px;
+  background: transparent;
+  border-radius: 6px;
+}
+
+/*鼠标位于内容上时，滚动滑块样式*/
+.h-goldlist-container:hover::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  -webkit-box-shadow: inset 0 0 (8px - 1px) rgba(193, 193, 193, 0.3);
+  box-shadow: none;
+  border-radius: 10px;
+}
+#li{
+  float: left;
+}
 .h-goldlist-container{
-  overflow:hidden; width:760px
+    white-space: nowrap;
+  overflow-x: scroll;
+    min-width: 0;
+  height: 80px;
+  width: 609px;
+  border-width: 0px;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-y: hidden;
+    overflow-y: hidden;
+    background-image: none;
+    border: none;
+    border-radius: 0px;
 }
 .h-goldlist-card{
+    
+   display: inline-block;
+           word-wrap: break-word;
+        word-break: break-all;
+        overflow: hidden;
+  min-width: 0;
     margin-top: 5px;
     margin-left: 15px;
     width: 116.75px;
@@ -104,4 +170,29 @@
     position: relative;
     top: -4px;
 }
+/* 
+    .t-ctn {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .t-ctn .s-ctn {
+        height: 80px;
+        white-space: nowrap;
+        font-size: 0;
+    }
+
+    .t-ctn .s-ctn div {
+        font-size: 14px;
+        box-sizing: border-box;
+        white-space: normal;
+        word-wrap: break-word;
+        word-break: break-all;
+        overflow: hidden;
+        display: inline-block;
+        width: 100px;
+        height: 100%;
+        border: 10px solid red;
+    } */
+
 </style>
