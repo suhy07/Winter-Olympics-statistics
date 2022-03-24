@@ -1,9 +1,15 @@
 <template> 
     <div class="map-container">
+        <div class="map-card map-body">
+            <div class="map-card map-title">
+                <div class="map-text">奖牌地图</div>
+            </div>
+            <base-map/>
+        </div>
     </div>
 </template>
 <script>
-import BaseHead from '@/components/base-head'
+import BaseMap from '@/components/base-map'
 export default{
     data() {
         return {
@@ -11,17 +17,17 @@ export default{
         }
     },
     components: {
-        BaseHead,
+        BaseMap
     }
 }
 </script>
 <style scoped>
-.total-container{
+.map-container{
     position: absolute;
     top: 55px;
     width:80.3%;
 }
-.total-card{
+.map-card{
     background-color: rgba(255, 255, 255, 1);
     border-width: 1px;
     border-radius: 188px;
@@ -29,60 +35,46 @@ export default{
     border-style: dotted;
     border-color: rgb(0, 0, 0);
 }
-.total-text{
+.map-text{
     display: inline-block;
     position: relative;
-    top:-10px;
-    left: 55px;
+    top: 15px;
+    left: 370px;
     background: inherit;
     background-color: rgba(255, 255, 255, 0);
     font-family: '华光标题宋_CNKI', sans-serif;
     font-style: normal;
-    font-size: 20px;
+    font-size: 25px;
+    letter-spacing: 50px;
     color: #FFFFFF;
     margin: 0 85px 0 1px;
 }
-.total-list{
-    position: absolute;
-    top:160px;
-    left: 60px;
-}
-.total-list-text{
-    font-family: 'Arial Normal', 'Arial', sans-serif;
-    font-weight: 100;
-    font-size: 15px;
-    margin-right: 134px;
-    color:black;
-}
-.total-list-text-country{
-    position: relative;
-    left: 30px;
-}
-.total-list-img{
-    width: 50px;
-    position: relative;
-    left: 20px;
-    top: 8px;
-}
-.total-img{
+.map-img{
     position: relative;
     top:4px;
     left: 55px;
 }
-.total-body{
+.map-body{
     position: absolute;
+    padding: 100px 0;
     top:60px;
     left:5%;
-    height: 1600px;
+    height: 800px;
     width: 90%;
     border-radius: 60px;
 }
-.total-title{
+.map-title{
     position:absolute;
-    top:60px;
+    top: 60px;
     left: 5%;
     background-color: #4589D6;
     width: 90%;
     height: 55px;
+}
+#map{
+    position: absolute;
+    top:-20%;
+    width: 80%;
+    height: 120%;
 }
 </style>

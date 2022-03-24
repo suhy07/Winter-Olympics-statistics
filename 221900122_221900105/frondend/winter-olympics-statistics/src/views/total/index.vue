@@ -17,9 +17,9 @@
                     <div class="total-text total-list-text">1</div>
                     <img class="total-list-img" src="@/assets/CHN.png">
                     <div class="total-text total-list-text total-list-text-country">中国</div>
+                    <div class="total-text total-list-text total-list-text-gold">11</div>
                     <div class="total-text total-list-text">11</div>
-                    <div class="total-text total-list-text">11</div>
-                    <div class="total-text total-list-text">11</div>
+                    <div class="total-text total-list-text total-list-text-bronze">11</div>
                     <div class="total-text total-list-text">33</div>
                 </div>
             </div>
@@ -52,13 +52,13 @@ export default{
 .total-text{
     display: inline-block;
     position: relative;
-    top:-10px;
+    top:-15px;
     left: 55px;
     background: inherit;
     background-color: rgba(255, 255, 255, 0);
     font-family: '华光标题宋_CNKI', sans-serif;
     font-style: normal;
-    font-size: 20px;
+    font-size: 18px;
     color: #FFFFFF;
     margin: 0 85px 0 1px;
 }
@@ -71,8 +71,17 @@ export default{
     font-family: 'Arial Normal', 'Arial', sans-serif;
     font-weight: 100;
     font-size: 15px;
-    margin-right: 134px;
+    margin-right: 128px;
     color:black;
+}
+.total-list-text-gold{
+    position: relative;
+    left: 35px;
+}
+.total-list-text-bronze{
+    position: relative;
+    left: 79px;
+    
 }
 .total-list-text-country{
     position: relative;
@@ -81,8 +90,8 @@ export default{
 .total-list-img{
     width: 50px;
     position: relative;
-    left: 20px;
-    top: 8px;
+    left: 28px;
+    top: 4px;
 }
 .total-img{
     position: relative;
