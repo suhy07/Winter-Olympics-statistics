@@ -1,38 +1,18 @@
 <template> 
-    <div class="total-container">
-        <div class="total-card total-body">
-            <div class="total-card total-title">
-                <div class="total-text">排名</div>
-                <div class="total-text">国家/地区</div>
-                <img class="total-img" src="@/assets/gold.png">
-                <div class="total-text">金牌</div>
-                <img class="total-img" src="@/assets/gray.png">
-                <div class="total-text">银牌</div>
-                <img class="total-img" src="@/assets/bronze.png">
-                <div class="total-text">铜牌</div>
-                <div class="total-text">总数</div>
-            </div>
-            <div class="total-list">
-                <div v-for="i in count" :key="i">
-                    <div class="total-text total-list-text">1</div>
-                    <img class="total-list-img" src="@/assets/CHN.png">
-                    <div class="total-text total-list-text total-list-text-country">中国</div>
-                    <div class="total-text total-list-text">11</div>
-                    <div class="total-text total-list-text">11</div>
-                    <div class="total-text total-list-text">11</div>
-                    <div class="total-text total-list-text">33</div>
-                </div>
-            </div>
-        </div>
+    <div class="map-container">
     </div>
 </template>
 <script>
+import BaseHead from '@/components/base-head'
 export default{
     data() {
         return {
             count:25
         }
     },
+    components: {
+        BaseHead,
+    }
 }
 </script>
 <style scoped>

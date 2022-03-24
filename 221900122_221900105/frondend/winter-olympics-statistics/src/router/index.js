@@ -22,7 +22,7 @@ export const  constantRoutes= [
     {
       path: '/map',
       name: 'Map',
-      component:  () => import('@/components/base-map'),
+      component:  () => import('@/views/map/index'),
       meta:{
         title:'奖牌地图'
       }
