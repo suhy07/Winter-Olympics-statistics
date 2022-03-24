@@ -1,100 +1,143 @@
 <template> 
-    <div class="homepage-container">
+    <div class="schedule-container">
+        <div class="schedule-card schedule-body">
+            <div class="schedule-card schedule-title">
+                <div class="schedule-text">每日赛程</div>
+            </div>
+            <div>
+                <el-table
+                    :data="tableData"
+                    style="width: 100%"
+                    :default-sort = "{prop: 'time', order: 'descending'}">
+                    <el-table-column
+                        prop="time"
+                        label="时间"
+                        sortable
+                        width="180"
+                        >
+                    </el-table-column>
+                    <el-table-column
+                        prop="major"
+                        label="大项"
+                        sortable
+                        width="180"
+                        >
+                    </el-table-column>
+                    <el-table-column
+                        prop="match"
+                        label="比赛"
+                        >
+                    </el-table-column>
+                    <el-table-column
+                        prop="venue"
+                        label="场馆"
+                        >
+                    </el-table-column>
+                    <el-table-column
+                        prop="status"
+                        label="比赛状态"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                        prop="url"
+                        label="数据"
+                    >
+                    </el-table-column>
+                </el-table>
+            </div>
+        </div>
     </div>
 </template>
 <script>
-import BaseHead from '@/components/base-head'
 export default{
     data() {
         return {
+            tableData: [{
+                time: '11日09:05',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
+            }, {
+                time: '11日09:05',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
+            }, {
+                time: '11日16:40',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
+            }, {
+                time: '11日20:01',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
+            }]
         }
     },
-    components: {
-        BaseHead,
+    methods:{
+           formatter(row, column) {
+        return row.address;
+      }
     }
 }
 </script>
-<style>
-.homepage-container{
-    margin: 0 150px;
-}
-.homepage-background{
-    width: 100%;
-    height: 100%;
-}
-.homepage-body{
+<style scoped>
+.schedule-container{
     position: absolute;
-    top: 113px;
-    width:80.4%;			
-    height:100vh;
-    background-size: 1676px 3630px;
+    top: 55px;
+    width:80.3%;
 }
-.homepage-row{
-    width: 100%;
-}
-.homepage-main{
-    padding:0;
-    height: 100vh;
-    overflow:inherit;
-}
-.homepage-card{
-    width: 100%;
-    height: 41px;
-    background: inherit;
+.schedule-card{
     background-color: rgba(255, 255, 255, 1);
-    padding: 8px 0 8px 70px;
-    box-sizing: border-box;
     border-width: 1px;
     border-radius: 188px;
     box-shadow: 0px 0px 10px rgb(170 170 170 / 35%);
-}
-.homepage-card-text{
-    font-family: 'Microsoft YaHei UI Bold', 'Microsoft YaHei UI Regular', 'Microsoft YaHei UI', sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    letter-spacing: 2px;
-    font-size: 16px;
-}
-.homepage-card-select{
-    border-style: solid;
-    border-color: rgba(255, 255, 255, 1);
-}
-.homepage-card-default{
     border-style: dotted;
     border-color: rgb(0, 0, 0);
 }
-.homepage-card-goldlist{
-    height: 82px;
-    width: 100%;
-    box-sizing: border-box;
-    border-radius: 20px;
-    padding: 0;
-}
-.homepage-card-carousel{
-    padding: 0;
+.schedule-text{
+    display: inline-block;
     position: relative;
-    top: 50px;
-    left: 50px;
-    height: 600px;
-    width: 800px;
-    border-radius: 50px;
+    top: 15px;
+    left: 370px;
+    background: inherit;
+    background-color: rgba(255, 255, 255, 0);
+    font-family: '华光标题宋_CNKI', sans-serif;
+    font-style: normal;
+    font-size: 25px;
+    letter-spacing: 50px;
+    color: #FFFFFF;
+    margin: 0 85px 0 1px;
 }
-.homepage-card-tab{
+.schedule-img{
     position: relative;
-    padding: 0;
-    top: 50px;
-    left: 75px;
-    height: 600px;
-    width: 300px;
-    border-radius: 50px;
+    top:4px;
+    left: 55px;
 }
-.homepage-card-map{
-    padding: 0;
-    position: relative;
-    top: 200px;
-    left: 50px;
+.schedule-body{
+    position: absolute;
+    padding: 100px 0;
+    top:60px;
+    left:5%;
     height: 800px;
-    width: 1135px;
-    border-radius: 50px;
+    width: 90%;
+    border-radius: 60px;
+}
+.schedule-title{
+    position:absolute;
+    top: 60px;
+    left: 5%;
+    background-color: #4589D6;
+    width: 90%;
+    height: 55px;
 }
 </style>

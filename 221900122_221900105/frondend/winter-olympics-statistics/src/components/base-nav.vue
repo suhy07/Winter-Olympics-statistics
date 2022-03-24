@@ -26,10 +26,12 @@ export default {
 .nav-div {
     position:inherit;
     height: 55px;
-    background-color: rgba(136, 153, 243, 1);
-     -moz-box-shadow: 0px -12px 5px 16px rgba(192, 228, 248, 1) inset;
+    background-color: #71ADE8;
+    border-color: #FFF;
+    border-width: 2px;
+     /* -moz-box-shadow: 0px -12px 5px 16px rgba(192, 228, 248, 1) inset;
     -webkit-box-shadow: 0px -12px 5px 16px rgb(192 228 248) inset;
-    box-shadow: 0px -2px 5px 10px rgb(192 228 248) inset; 
+    box-shadow: 0px -2px 5px 1px rgb(255 255 255) inset;  */
 }
 .nav-img{
     height: 28px;
