@@ -85,27 +85,23 @@
 }
 .h-goldlist-container{
     white-space: nowrap;
-  overflow-x: scroll;
+    position: relative;
+    left: 2%;
+    overflow-x: scroll;
     min-width: 0;
-  height: 80px;
-  width: 609px;
-  border-width: 0px;
+    height: 85px;
+    width: 950px;
+    border-width: 0px;
     -webkit-overflow-scrolling: touch;
-    -ms-overflow-y: hidden;
     overflow-y: hidden;
-    background-image: none;
-    border: none;
     border-radius: 0px;
 }
 .h-goldlist-card{
     
-   display: inline-block;
-           word-wrap: break-word;
-        word-break: break-all;
-        overflow: hidden;
-  min-width: 0;
+    display: inline-block;
+    min-width: 0;
     margin-top: 5px;
-    margin-left: 15px;
+    margin-right: 15px;
     width: 116.75px;
     height: 66px;
     background: inherit;
