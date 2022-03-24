@@ -1,6 +1,6 @@
 <template>
     <div class="h-goldlist-container">
-         <div v-for="i in count" class="h-goldlist-card">
+         <div v-for="i in count" :key="i" class="h-goldlist-card">
           <el-row>
             <el-col :span="6">
               <div class="h-goldlist-card-num">
