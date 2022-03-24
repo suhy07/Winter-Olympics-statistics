@@ -1,12 +1,9 @@
 <template> 
     <div class="homepage-container">
-        <base-head/>
-        <base-nav/>
-        <div>
-            <img src="@/assets/bdd.png" class="homepage-background">
-            <el-container   class="homepage-body">
-                <el-main class="homepage-main">
+            <div class="homepage-body">
+                <div class="homepage-main">
                     <el-row class="homepage-row">
+                                <base-nav/>
                         <el-col :span="4">
                             <div class="homepage-card homepage-card-select">
                                 <span class="homepage-card-text">金牌榜</span>
@@ -38,9 +35,8 @@
                            <base-map/>
                        </div>
                     </el-row>
-                </el-main>
-            </el-container>
-        </div>
+                </div>
+            </div>
     </div>
 </template>
 <script>
@@ -67,18 +63,9 @@ export default{
 </script>
 <style>
 .homepage-container{
-    margin: 0 150px;
-}
-.homepage-background{
-    width: 100%;
-    height: 100%;
-}
-.homepage-body{
     position: absolute;
-    top: 113px;
-    width:80.4%;			
-    height:100vh;
-    background-size: 1676px 3630px;
+    top: 55px;
+    width:80.3%;
 }
 .homepage-row{
     width: 100%;

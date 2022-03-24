@@ -1,12 +1,18 @@
 <template>
-  <div id="app">
+  <div class="app-container">
+    <base-head/>
+    <img src="@/assets/bdd.png" class="homepage-background">
     <router-view/>
   </div>
 </template>
 
 <script>
+import BaseHead from '@/components/base-head'
 export default {
-  name: 'App'
+  name: 'App',
+  components:{
+    BaseHead
+  }
 }
 </script>
 
@@ -20,12 +26,11 @@ body{
    width: 100%;
   height: 100%;
 }
-#app {
-  width: 100%;
-  height: 100%;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-} 
+.homepage-background{
+    width: 100%;
+    height: 100%;
+}
+.app-container{
+    padding: 0 150px;
+}
 </style>

@@ -6,7 +6,6 @@ Vue.use(Router)
 export const  constantRoutes= [
     {
       path: '/',
-      name: 'HomePage',
       component:  () => import('@/views/homepage/index'),
       meta:{
         title:'主页'
@@ -22,10 +21,26 @@ export const  constantRoutes= [
     },
     {
       path: '/map',
-      name: 'map',
+      name: 'Map',
       component:  () => import('@/components/base-map'),
       meta:{
-        title:'主页'
+        title:'奖牌地图'
+      }
+    },
+    {
+      path: '/schedule',
+      name: 'Schedule',
+      component:  () => import('@/views/schedule/index'),
+      meta:{
+        title:'每日赛程'
+      }
+    },
+    {
+      path: '/total',
+      name: 'Total',
+      component:  () => import('@/views/total/index'),
+      meta:{
+        title:'奖牌总榜'
       }
     },
     {
@@ -33,7 +48,7 @@ export const  constantRoutes= [
       name: 'test',
       component:  () => import('@/views/homepage/components/h-goldlist'),
       meta:{
-        title:'主页'
+        title:'测试页面'
       }
     },
 ]

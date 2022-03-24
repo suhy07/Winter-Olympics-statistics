@@ -9,18 +9,19 @@
           <span>金牌榜第{{rank}}名</span>
         </div>
         <div class="map-card-gold">
-          <span class="map-card-text">金</span>
-          <span class="map-card-text">{{gold}}</span>
+          <div></div>
+          <div class="map-card-text">金</div>
+          <div class="map-card-text">{{gold}}</div>
           <img class="map-card-img map-card-img-gold" src="@/assets/gold.png"/>
         </div>
         <div class="map-card-gray">
-          <span class="map-card-text">银</span>
-          <span class="map-card-text">{{gray}}</span>
+          <div class="map-card-text">银</div>
+          <div class="map-card-text">{{gray}}</div>
           <img class="map-card-img map-card-img-gray" src="@/assets/gray.png"/>
         </div>
         <div class="map-card-bronze">
-          <span class="map-card-text">铜</span>
-          <span class="map-card-text">{{bronze}}</span>
+          <div class="map-card-text">铜</div>
+          <div class="map-card-text">{{bronze}}</div>
           <img class="map-card-img map-card-img-bronze" src="@/assets/bronze.png"/>
         </div>
       </div>
@@ -502,6 +503,8 @@ nameMap : {
   padding: 20px 0 13px 0;
 }
 .map-card-text{
+  display: inline-block;
+  width: 20px;
   position: relative;
   top: -10px;
   padding: 0 30px 0 0;
@@ -510,6 +513,9 @@ nameMap : {
   font-size: 25px;
   color: #333333;
   text-align: center;
+}
+.map-card-img{
+
 }
 .map-tip{
   position: relative;

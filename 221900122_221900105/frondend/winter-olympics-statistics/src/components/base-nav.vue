@@ -24,7 +24,7 @@ export default {
 }
 <style>
 .nav-div {
-    margin-top: 3px;
+    position:inherit;
     height: 55px;
     background-color: rgba(136, 153, 243, 1);
      -moz-box-shadow: 0px -12px 5px 16px rgba(192, 228, 248, 1) inset;

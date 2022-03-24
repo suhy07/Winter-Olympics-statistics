@@ -25,7 +25,6 @@
          </div>
     </div>
 </template>
-
 <script>
   export default {
     data () {
@@ -86,18 +85,17 @@
 .h-goldlist-container{
     white-space: nowrap;
     position: relative;
-    left: 2%;
+    left: 0.25%;
     overflow-x: scroll;
     min-width: 0;
     height: 85px;
-    width: 950px;
+    width: 1012px;
     border-width: 0px;
     -webkit-overflow-scrolling: touch;
     overflow-y: hidden;
-    border-radius: 0px;
+    border-radius: 30px;
 }
 .h-goldlist-card{
-    
     display: inline-block;
     min-width: 0;
     margin-top: 5px;
