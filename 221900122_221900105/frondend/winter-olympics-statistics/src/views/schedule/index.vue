@@ -4,7 +4,43 @@
             <div class="schedule-card schedule-title">
                 <div class="schedule-text">每日赛程</div>
             </div>
-            <div>
+            <div class="schedule-select">
+                <el-select v-model="value1" multiple placeholder="请选择日期">
+                    <el-option
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                    </el-option>
+                </el-select>
+                <el-select
+                    v-model="value2"
+                    multiple
+                    collapse-tags
+                    style="margin-left: 20px;"
+                    placeholder="请选择大项">
+                    <el-option
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                    </el-option>
+                </el-select>
+                <el-select
+                    v-model="value2"
+                    multiple
+                    collapse-tags
+                    style="margin-left: 20px;"
+                    placeholder="请选择场馆">
+                    <el-option
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                    </el-option>
+                </el-select>
+            </div>
+            <div class="schedule-table">
                 <el-table
                     :data="tableData"
                     style="width: 100%"
@@ -80,6 +116,90 @@ export default{
                 venue: '国家游泳中心',
                 status:'已结束',
                 url:'成绩公报'
+            },{
+                time: '11日09:05',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
+            }, {
+                time: '11日09:05',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
+            }, {
+                time: '11日16:40',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
+            }, {
+                time: '11日20:01',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
+            },{
+                time: '11日09:05',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
+            }, {
+                time: '11日09:05',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
+            }, {
+                time: '11日16:40',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
+            }, {
+                time: '11日20:01',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
+            },{
+                time: '11日09:05',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
+            }, {
+                time: '11日09:05',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
+            }, {
+                time: '11日16:40',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
+            }, {
+                time: '11日20:01',
+                major: '王小虎',
+                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
+                venue: '国家游泳中心',
+                status:'已结束',
+                url:'成绩公报'
             }]
         }
     },
@@ -128,7 +248,7 @@ export default{
     padding: 100px 0;
     top:60px;
     left:5%;
-    height: 800px;
+    height: 1200px;
     width: 90%;
     border-radius: 60px;
 }
@@ -139,5 +259,32 @@ export default{
     background-color: #4589D6;
     width: 90%;
     height: 55px;
+}
+.schedule-table{
+    position: relative;
+    top: 100px;
+    height: 1100px;
+    overflow-y: scroll;
+}
+.schedule-table::-webkit-scrollbar {
+    width: 2px - 0px;
+    height: 4px;
+    background: transparent;
+}
+.schedule-table::-webkit-scrollbar-thumb {
+    background: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.schedule-table:hover::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
+    -webkit-box-shadow: inset 0 0 (4px - 1px) rgba(193, 193, 193, 0.3);
+    box-shadow: none;
+    border-radius: 20px;
+}
+.schedule-select{
+    position: relative;
+    top: 40px;
+    left: 190px;
 }
 </style>
