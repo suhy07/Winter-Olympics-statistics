@@ -68,7 +68,7 @@ export default{
     width:80.3%;
 }
 .homepage-row{
-    width: 100%;
+    width: 1219px;
 }
 .homepage-main{
     padding:0;

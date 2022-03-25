@@ -1,25 +1,42 @@
 <template>
   <el-carousel indicator-position="outside">
-    <el-carousel-item v-for="item in 4" :key="item">
-      <img src="@/assets/北京2022.png">
+    <el-carousel-item>
+      <img class="carousel-img" src="@/assets/u259.jpg">
+    </el-carousel-item>
+        <el-carousel-item>
+      <img class="carousel-img" src="@/assets/u260.jpg">
+    </el-carousel-item>
+        <el-carousel-item>
+      <img class="carousel-img" src="@/assets/u261.jpg">
     </el-carousel-item>
   </el-carousel>
 </template>
 
-<style>
-  .el-carousel__item h3 {
-    color: #475669;
-    font-size: 18px;
-    opacity: 0.75;
-    line-height: 300px;
-    margin: 0;
+<style scpoed>
+.carousel-img{
+  width: 800px;
+}
+.el-carousel{
+  position: relative;
+  top: 50px;
+     height: 800px;
+}
+.el-carousel__arrow{
+  position: relative;
+  top: 300px;
+}
+.el-carousel__indicator{
+  position: relative;
+  top: 200px;
+}
+  .el-carousel__item{
+    height: 500px;
   }
-  
   .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
+    background-color: #A2CEE8;
   }
   
   .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
+    background-color: #A2CEE8;
   }
 </style>

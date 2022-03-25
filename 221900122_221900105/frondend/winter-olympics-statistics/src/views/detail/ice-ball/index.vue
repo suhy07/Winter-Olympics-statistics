@@ -108,9 +108,6 @@ export default{
         Graph
     },
     methods:{
-           formatter(row, column) {
-        return row.address;
-      }
     }
 }
 </script>
@@ -402,7 +399,7 @@ export default{
     left: 12px;
     top: 60px;
     border-radius: 25px;
-    height: 200px;
+    height: 500px;
     width: 650px;
     overflow: hidden;
 }

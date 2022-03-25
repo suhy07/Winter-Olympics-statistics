@@ -27,7 +27,7 @@ export default {
 
 <style>
 html{
-  width: 100%;
+  width: 1519px;
   height: 100%;
 }
 body{

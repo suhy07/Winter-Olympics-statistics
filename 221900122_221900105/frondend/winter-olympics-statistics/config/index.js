@@ -10,7 +10,6 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -36,11 +35,11 @@ module.exports = {
     cssSourceMap: true,
     proxyTable: {
       // proxy all requests starting with /api to jsonplaceholder
-      '/api': {
-        target: 'http://jsonplaceholder.typicode.com',
+      '/apis': {
+        target: 'http://47.98.173.217:8087',
         changeOrigin: true,
         pathRewrite: {
-          '^/api': ''
+          '^/apis': ''
         }
       }
     }
@@ -53,7 +52,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: './',
+    assetsPublicPath: '/',
 
     /**
      * Source Maps

@@ -12,9 +12,6 @@ export async function getTitle(_documentcode) {
     });
     return data
 }
-set1231(){
-    
-}
 export function request(config) {
     // 1.创建axios的实例
     const instance = axios.create({

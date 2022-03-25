@@ -36,9 +36,6 @@
   </div>
 </template>
 <script>
-import Vue from 'vue';
-// 如需扩张更多省市,在此处引入对应的地图JSON数据
-// 
 import world from '../datas/DataMap/world.json'
 export default {
   name: "base-map", 

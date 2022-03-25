@@ -1,50 +1,56 @@
 <template>
   <div class="h-goldlist-container" >
-    <div v-for="i in count" :key="i" class="h-goldlist-card">
+    <div v-for="i in medalList" class="h-goldlist-card">
       <el-row>
         <el-col :span="6">
           <div class="h-goldlist-card-num">
-            <span class="h-goldlist-text h-goldlist-card-num-text">{{i}}</span>
+            <span class="h-goldlist-text h-goldlist-card-num-text">{{i.rank}}</span>
           </div>
         </el-col>
         <el-col :span="18">
           <div class="h-goldlist-card-country">
-            <img  class="h-goldlist-card-country-img" src="@/assets/NOR.png"/>
-            <span class="h-goldlist-text h-goldlist-card-country-text">NOR</span>
+            <img  class="h-goldlist-card-country-img" :src="['./static/assets/'+i.countryid+'.png']" />
+            <span class="h-goldlist-text h-goldlist-card-country-text">{{i.countryid}}</span>
           </div>
         </el-col>
       </el-row>
       <div class="h-goldlist-card-medal">
         <img  class="h-goldlist-card-medal-img h-goldlist-card-medal-img-gold" src="@/assets/gold.png"/>
-        <span class="h-goldlist-text h-goldlist-card-medal-text h-goldlist-card-medal-text-gold">1</span>
+        <span class="h-goldlist-text h-goldlist-card-medal-text h-goldlist-card-medal-text-gold">{{i.gold}}</span>
         <img  class="h-goldlist-card-medal-img h-goldlist-card-medal-img-gray" src="@/assets/gray.png"/>
-        <span class="h-goldlist-text h-goldlist-card-medal-text h-goldlist-card-medal-text-gray">1</span>
+        <span class="h-goldlist-text h-goldlist-card-medal-text h-goldlist-card-medal-text-gray">{{i.silver}}</span>
         <img  class="h-goldlist-card-medal-img h-goldlist-card-medal-img-bronze" src="@/assets/bronze.png"/>
-        <span class="h-goldlist-text h-goldlist-card-medal-text h-goldlist-card-medal-text-bronze">1</span>
+        <span class="h-goldlist-text h-goldlist-card-medal-text h-goldlist-card-medal-text-bronze">{{i.bronze}}</span>
       </div>
     </div>
   </div>
 </template>
 <script>
-import {request} from "@/js/request";
+import {getMedalList} from "@/api/medal";
   export default {
     data () {
       return {
         count: 10,
-        loading: false
+        medalList:{}
       }
     },
-methods:{
-  test(){
-    return request({
-    url:'/json',
-    method:"get",
-    data:{
-      'username':'username',
-      'password':'password',
+    mounted(){
+      console.log("call")
+      this.initMedal()
     },
-  })
- }}
+  methods:{
+    initMedal(){
+      var t=getMedalList()
+      console.log(t)
+      t.then((result)=>{
+        console.log(result)
+        this.medalList=result.medalList.sort(function(a,b){
+          return a.rank-b.rank
+        })
+       })
+
+    }
+    }
   }
 </script>
 <style>
@@ -161,7 +167,7 @@ methods:{
 }
 .h-goldlist-card-medal{
     padding-top:10px;
-    padding-left: 10px;
+
 }
 .h-goldlist-card-medal-img{
     width: 15px;
