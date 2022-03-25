@@ -12,7 +12,16 @@ export default {
   name: 'App',
   components:{
     BaseHead
-  }
+  },
+   metaInfo: {
+        title: "页面标题",
+        meta: [
+          { name: "keywords", content: "页面关键字" },
+          { name: "description", content: "页面描述" },
+          { name:"viewport" , content:"dth=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"},
+        ],
+      },
+      
 }
 </script>
 

@@ -1,38 +1,50 @@
 <template>
-    <div class="h-goldlist-container">
-         <div v-for="i in count" :key="i" class="h-goldlist-card">
-          <el-row>
-            <el-col :span="6">
-              <div class="h-goldlist-card-num">
-                <span class="h-goldlist-text h-goldlist-card-num-text">{{i}}</span>
-              </div>
-            </el-col>
-            <el-col :span="18">
-              <div class="h-goldlist-card-country">
-                <img  class="h-goldlist-card-country-img" src="@/assets/NOR.png"/>
-                <span class="h-goldlist-text h-goldlist-card-country-text">NOR</span>
-              </div>
-            </el-col>
-          </el-row>
-          <div class="h-goldlist-card-medal">
-            <img  class="h-goldlist-card-medal-img h-goldlist-card-medal-img-gold" src="@/assets/gold.png"/>
-            <span class="h-goldlist-text h-goldlist-card-medal-text h-goldlist-card-medal-text-gold">1</span>
-            <img  class="h-goldlist-card-medal-img h-goldlist-card-medal-img-gray" src="@/assets/gray.png"/>
-            <span class="h-goldlist-text h-goldlist-card-medal-text h-goldlist-card-medal-text-gray">1</span>
-            <img  class="h-goldlist-card-medal-img h-goldlist-card-medal-img-bronze" src="@/assets/bronze.png"/>
-            <span class="h-goldlist-text h-goldlist-card-medal-text h-goldlist-card-medal-text-bronze">1</span>
+  <div class="h-goldlist-container" >
+    <div v-for="i in count" :key="i" class="h-goldlist-card">
+      <el-row>
+        <el-col :span="6">
+          <div class="h-goldlist-card-num">
+            <span class="h-goldlist-text h-goldlist-card-num-text">{{i}}</span>
           </div>
-         </div>
+        </el-col>
+        <el-col :span="18">
+          <div class="h-goldlist-card-country">
+            <img  class="h-goldlist-card-country-img" src="@/assets/NOR.png"/>
+            <span class="h-goldlist-text h-goldlist-card-country-text">NOR</span>
+          </div>
+        </el-col>
+      </el-row>
+      <div class="h-goldlist-card-medal">
+        <img  class="h-goldlist-card-medal-img h-goldlist-card-medal-img-gold" src="@/assets/gold.png"/>
+        <span class="h-goldlist-text h-goldlist-card-medal-text h-goldlist-card-medal-text-gold">1</span>
+        <img  class="h-goldlist-card-medal-img h-goldlist-card-medal-img-gray" src="@/assets/gray.png"/>
+        <span class="h-goldlist-text h-goldlist-card-medal-text h-goldlist-card-medal-text-gray">1</span>
+        <img  class="h-goldlist-card-medal-img h-goldlist-card-medal-img-bronze" src="@/assets/bronze.png"/>
+        <span class="h-goldlist-text h-goldlist-card-medal-text h-goldlist-card-medal-text-bronze">1</span>
+      </div>
     </div>
+  </div>
 </template>
 <script>
+import {request} from "@/js/request";
   export default {
     data () {
       return {
         count: 10,
         loading: false
       }
-    }
+    },
+methods:{
+  test(){
+    return request({
+    url:'/json',
+    method:"get",
+    data:{
+      'username':'username',
+      'password':'password',
+    },
+  })
+ }}
   }
 </script>
 <style>
@@ -44,11 +56,6 @@
   overflow: -moz-scrollbars-none;
   /** Firefox */
 }
-
-/*整个滚动条样式 当width:0;或display:none;时，滚动条不显示*/
-/* .h-goldlist-container      ::-webkit-scrollbar {
-  display: none;
-} */
 
 /*整个滚动条样式*/
 .h-goldlist-container::-webkit-scrollbar {
@@ -164,29 +171,5 @@
     position: relative;
     top: -4px;
 }
-/* 
-    .t-ctn {
-        width: 100%;
-        overflow-x: auto;
-    }
-
-    .t-ctn .s-ctn {
-        height: 80px;
-        white-space: nowrap;
-        font-size: 0;
-    }
-
-    .t-ctn .s-ctn div {
-        font-size: 14px;
-        box-sizing: border-box;
-        white-space: normal;
-        word-wrap: break-word;
-        word-break: break-all;
-        overflow: hidden;
-        display: inline-block;
-        width: 100px;
-        height: 100%;
-        border: 10px solid red;
-    } */
 
 </style>

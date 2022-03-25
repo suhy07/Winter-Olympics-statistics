@@ -7,21 +7,36 @@
         </el-col>
         <el-col :span="22">
             <div class="nav-text">
-                <span class="nav-text1">奖牌总榜</span>
-                <span class="nav-text2">每日赛程</span>
-                <span class="nav-text3">奖牌地图</span>
+                <span class="nav-text1" @click="toTotal">奖牌总榜</span>
+                <span class="nav-text2" @click="toSchedule">每日赛程</span>
+                <span class="nav-text3" @click="toMap">奖牌地图</span>
             </div>
         </el-col>
       </el-row>
     </el-container>
 </template>
+<script>
 export default {
   name: "nav", 
   data() {
     return {
     }
+  },
+  methods:{
+      toTotal(){
+          this.$router.push('/total')
+      },
+      toSchedule(){
+          this.$router.push('/schedule')
+      },
+      toMap(){
+          this.$router.push('/map')
+      }
   }
 }
+</script>
+
+
 <style>
 .nav-div {
     position:inherit;

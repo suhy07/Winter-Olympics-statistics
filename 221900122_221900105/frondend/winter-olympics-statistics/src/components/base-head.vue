@@ -2,24 +2,33 @@
     <el-container class="head-div">
       <el-row>
         <el-col :span="10">
-          <img class="head-img head-img1" src="@/assets/冬奥统计.png">
+          <img class="head-img head-img1" src="@/assets/冬奥统计.png" @click="toHomePage">
         </el-col>
         <el-col :span="2">
           <img class="head-img head-img2" src="@/assets/竖线.png">
         </el-col>
         <el-col :span="12">
-          <img class="head-img head-img3" src="@/assets/五环.png">
+          <img class="head-img head-img3" src="@/assets/五环.png" @click="toHomePage">
         </el-col>
       </el-row>
     </el-container>
 </template>
+<script>
 export default {
   name: "head", 
   data() {
     return {
     }
+  },
+  methods:{
+    toHomePage(){
+      this.$router.push('/homepage');
+    }
   }
 }
+</script>
+
+
 <style>
 .head-div {
     height: 55px;
