@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import com.demo.springboot.bean.*;
 import com.alibaba.fastjson.*;
 
-
 @RestController
 @RequestMapping("api/alpine-skiing-detail")  //再加一层路径
 public class AlpineSkiingDetailController {
@@ -76,10 +75,6 @@ public class AlpineSkiingDetailController {
 
 
 
-
-
-
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -92,7 +87,6 @@ public class AlpineSkiingDetailController {
 
         return result;
     }
-
 
 
     ////////////////////////////////////
@@ -150,25 +144,15 @@ public class AlpineSkiingDetailController {
             }
 
 
-
-
-
-
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-
-
 
 
         System.out.print(result);
 
         return result;
     }
-
-
 
     ////////////////////////////////////
 
