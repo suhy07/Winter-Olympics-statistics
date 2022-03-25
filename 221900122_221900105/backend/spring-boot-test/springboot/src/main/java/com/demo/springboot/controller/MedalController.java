@@ -12,7 +12,7 @@ import com.demo.springboot.bean.*;
 import com.alibaba.fastjson.*;
 
 @RestController
-@RequestMapping("/api/Medal")  //再加一层路径
+@RequestMapping("/api/medal")  //再加一层路径
 public class MedalController {
 
     @Autowired

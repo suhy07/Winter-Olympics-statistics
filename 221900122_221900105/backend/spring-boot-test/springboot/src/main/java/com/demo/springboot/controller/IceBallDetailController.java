@@ -20,7 +20,7 @@ import com.demo.springboot.bean.*;
 import com.alibaba.fastjson.*;
 
 @RestController
-@RequestMapping("/api/IceBallDetail")  //再加一层路径
+@RequestMapping("/api/ice-ball-detail")  //再加一层路径
 public class IceBallDetailController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class IceBallDetailController {
     //    "startdatecn": "2022-02-03 12:10:00"  "homescore": "12"    "awayscore": "1"
     //    "venuename": "国家体育馆"
     @ResponseBody
-    @RequestMapping("/Title")
+    @RequestMapping("/title")
     public String DetailTitleService(@RequestParam(name = "documentcode") String documentcode) {
         // 处理date
 
@@ -107,7 +107,7 @@ public class IceBallDetailController {
     // "Code": "P1" （第一节） "HomePeriodScore": "3" （主场得分） "AwayPeriodScore": "0" （客场得分）
     // 默认所有加时点球都没有
     @ResponseBody
-    @RequestMapping("/People")
+    @RequestMapping("/people")
     public String DetailPeopleService(@RequestParam(name = "documentcode") String documentcode) {
         // 处理date
 

@@ -20,7 +20,7 @@ import com.alibaba.fastjson.*;
 
 
 @RestController
-@RequestMapping("api/STSSDetail")  //再加一层路径
+@RequestMapping("api/stss-detail")  //再加一层路径
 public class STSSDetailController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class STSSDetailController {
     //       "itemcodename": "高山滑雪",
 
     @ResponseBody
-    @RequestMapping("/Title")
+    @RequestMapping("/title")
     public String DetailTitleService(@RequestParam(name = "documentcode") String documentcode) {
         // 处理date
 
@@ -104,7 +104,7 @@ public class STSSDetailController {
     // "Date": "2022-02-05",
 
     @ResponseBody
-    @RequestMapping("/Record")
+    @RequestMapping("/record")
     public String DetailRecordService(@RequestParam(name = "subitemcode") String subitemcode) {
         // 处理date
 
@@ -179,7 +179,7 @@ public class STSSDetailController {
     //  "Result": "44.681"
 
     @ResponseBody
-    @RequestMapping("/People")
+    @RequestMapping("/people")
     public String DetailPeopleService(@RequestParam(name = "documentcode") String documentcode) {
         // 处理date
 

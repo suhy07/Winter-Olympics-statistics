@@ -15,20 +15,16 @@ import com.demo.springboot.bean.*;
 import com.alibaba.fastjson.*;
 
 @RestController
-@RequestMapping("/api/Schedule")  //再加一层路径
+@RequestMapping("/api/schedule")  //再加一层路径
 public class ScheduleController {
 
     @Autowired
     ScheduleService scheduleService;
 
-    @ResponseBody
-    @RequestMapping("/hello/{name}/{age}")  //控制路径
-    public String hello(@PathVariable("age") String name, @PathVariable("name") int age) {  // hello?name=3
-        return "hello "+ name+" your age is"+age;
-    }
+
 /////////////////////////////////////
     @ResponseBody
-    @RequestMapping("/Date")
+    @RequestMapping("/date")
     public String helloService(@RequestParam(name = "date") String date) {
         // 处理date
         String aimdate="2022-02-"+date+" 00:00:00";
@@ -159,7 +155,7 @@ public class ScheduleController {
 
     /////////////////////////////////////
     @ResponseBody
-    @RequestMapping("/Place")
+    @RequestMapping("/place")
     public String DetailPlaceService(@RequestParam(name = "place") String place) {
         // 处理date
 
@@ -290,7 +286,7 @@ public class ScheduleController {
 
     /////////////////////////////////////
     @ResponseBody
-    @RequestMapping("/Item")
+    @RequestMapping("/item")
     public String DetailItemService(@RequestParam(name = "item") String item) {
         // 处理date
 
@@ -421,20 +417,7 @@ public class ScheduleController {
 
 
 
-    @ResponseBody
-    @GetMapping("/json")
-    public String export() throws IOException {
-         String filename = "./springboot/data/data/total.json";
-         String s;
-         StringBuffer stringBuffer = new StringBuffer("");
-         BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
-         while((s=bufferedReader.readLine()) != null) {
-             stringBuffer.append(s);
-         }
-         bufferedReader.close();
-//         return stringBuffer.toString();
-        return "cbGetScheduleInfo({\"data\":{\"homecode\":\"\",\"homescore\":\"\",\"venue\":\"YSC\",\"lockflag\":\"0\",\"vrtotaltitle\":\"\",\"venuename\":\"\\u56fd\\u5bb6\\u96ea\\u8f66\\u96ea\\u6a47\\u4e2d\\u5fc3\",\"awayname\":\"\",\"totaltitle\":\"\",\"startdatecn\":\"2022-02-20 11:20:00\",\"vrtotalcode\":\"\",\"awayid\":\"\",\"vrliveurl\":\"\",\"title\":\"\\u56db\\u4eba\\u96ea\\u8f66\\u7b2c4\\u8f6e\",\"pageid\":\"bobsleigh\",\"vrtotalurl\":\"\",\"combatflag\":\"0\",\"vrlivecode\":\"\",\"mvliveurl\":\"\",\"mvlivecode\":\"\",\"enddatecn\":\"2022-02-20 12:10:00\",\"medal\":\"1\",\"id\":\"OGMM164249724175910048\",\"livecode\":\"\",\"itemcodename\":\"\\u96ea\\u8f66\",\"subitemname\":\"\\u56db\\u4eba\\u96ea\\u8f66\",\"adcode\":\"\",\"deletedflag\":\"0\",\"reserve1\":\"startlist\",\"statusname\":\"\\u7ed3\\u675f\",\"reserve3\":\"\",\"reserve2\":\"CHN\",\"totalguid\":\"\",\"awaycode\":\"\",\"awayscore\":\"\",\"albumurl\":\"\",\"tabList\":[],\"subitemcode\":\"BOBOTEAM4-------------------------\",\"itemcode\":\"BOB-------------------------------\",\"imageurl\":\"\",\"homename\":\"\",\"totalurl\":\"\",\"homeid\":\"\",\"h5pageid\":\"\",\"documentcode\":\"BOBOTEAM4-------------FNL-000400--\",\"status\":\"FINISHED\",\"liveurl\":\"\"}});\n";
-    }
+
 }
 
 

@@ -20,7 +20,7 @@ import com.alibaba.fastjson.*;
 
 
 @RestController
-@RequestMapping("api/AlpineSkiingDetail")  //再加一层路径
+@RequestMapping("api/alpine-skiing-detail")  //再加一层路径
 public class AlpineSkiingDetailController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class AlpineSkiingDetailController {
     //       "itemcodename": "高山滑雪",
 
     @ResponseBody
-    @RequestMapping("/Title")
+    @RequestMapping("/title")
     public String DetailTitleService(@RequestParam(name = "documentcode") String documentcode) {
         // 处理date
 
@@ -104,7 +104,7 @@ public class AlpineSkiingDetailController {
     // "Order": "1",  "Result": "57.98" "Order": "2","Result": "57.99"  "Result": "1:55.97" (总成绩)
 
     @ResponseBody
-    @RequestMapping("/People")
+    @RequestMapping("/people")
     public String DetailPeopleService(@RequestParam(name = "documentcode") String documentcode) {
         // 处理date
 
