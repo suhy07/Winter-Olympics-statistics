@@ -1,6 +1,6 @@
 package com.demo.springboot.bean;
 
-public class Detail {
+public class Schedule {
     private String homeid ;
     private String h5pageid ;
     private String statusname   ;
