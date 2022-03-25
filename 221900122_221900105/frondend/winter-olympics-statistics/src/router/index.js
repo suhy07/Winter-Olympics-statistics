@@ -12,6 +12,14 @@ export const  constantRoutes= [
       }
     },
     {
+      path: '/test',
+      name: 'test',
+      component:  () => import('@/views/homepage/components/h-goldlist'),
+      meta:{
+        title:'测试页面'
+      }
+    },
+    {
       path: '/homepage',
       name: 'HomePage',
       component:  () => import('@/views/homepage/index'),
@@ -44,13 +52,24 @@ export const  constantRoutes= [
       }
     },
     {
-      path: '/test',
-      name: 'test',
-      component:  () => import('@/views/homepage/components/h-goldlist'),
+      path: '/detail/ice-ball',
+      name: 'DetailIceBall',
+      component:  () => import('@/views/detail/ice-ball/index'),
       meta:{
         title:'测试页面'
       }
     },
+    {
+      path: "/404",
+      name: "notFound",
+      component: () => import('@/components/404'),
+      hidden: true 
+    },   
+    {
+      path: '*',
+      redirect: '/404', 
+      hidden: true 
+    }
 ]
 
 const createRouter = () => new Router({

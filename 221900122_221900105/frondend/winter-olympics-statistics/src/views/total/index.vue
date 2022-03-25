@@ -47,7 +47,7 @@ export default{
     border-radius: 188px;
     box-shadow: 0px 0px 10px rgb(170 170 170 / 35%);
     border-style: dotted;
-    border-color: rgb(0, 0, 0);
+    border-color: #F2F2F2;
 }
 .total-text{
     display: inline-block;
