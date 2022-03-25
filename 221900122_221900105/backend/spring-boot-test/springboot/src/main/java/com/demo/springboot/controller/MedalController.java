@@ -80,18 +80,7 @@ public class MedalController {
             throwables.printStackTrace();
         }
 
-//        OkHttpClient client = new OkHttpClient().newBuilder()
-//                .build();
-//        Request request = new Request.Builder()
-//                .url("https://api.cntv.cn/Olympic/getBjOlyMatch?t=jsonp&cb=cbGetScheduleInfo&serviceId=2022dongao&id="+temStr)
-//                .method("GET", null)
-//                .build();
-//        try {
-//            Response response = client.newCall(request).execute();
-//            // System.out.print(response.body().string());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
 
 
         return json;
