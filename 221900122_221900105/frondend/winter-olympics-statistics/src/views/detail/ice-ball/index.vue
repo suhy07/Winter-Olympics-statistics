@@ -2,14 +2,14 @@
     <div class="ice-ball-container">
         <div class="ice-ball-card ice-ball-body">
             <div class="ice-ball-card ice-ball-title">
-                <div class="ice-ball-text">比赛:冰球 女子A组 加拿大 VS 瑞士</div>
+                <div class="ice-ball-text">比赛:{{schedule.title}}</div>
             </div>
             <div class="ice-ball-card ice-ball-table-container ice-ball-home">
                 <div class="ice-ball-card ice-ball-table-title">
                     <div class="ice-ball-text ice-ball-table-title-text">出场名单</div>
                 </div>
                 <div class="ice-ball-card ice-ball-table-teamname">
-                    <div class="ice-ball-text ice-ball-table-teamname-text">加拿大队</div>
+                    <div class="ice-ball-text ice-ball-table-teamname-text">{{schedule.homename}}</div>
                 </div>
                 <div class="ice-ball-table ice-ball-card">
                     <div class="ice-ball-th">
@@ -17,23 +17,23 @@
                         <div class="ice-ball-text ice-ball-th-text">姓名/代表队</div>
                         <div class="ice-ball-text ice-ball-th-text">位置</div>
                     </div>
-                    <div class="ice-ball-td" v-for="i in count" :key="i">
-                        <div class="ice-ball-text ice-ball-td-text">38</div>
+                    <div class="ice-ball-td" v-for="i in people[0].cards.data[0].AthleteList" :key="i">
+                        <div class="ice-ball-text ice-ball-td-text">{{i.Bib}}</div>
                         <img class="ice-ball-td-img" src="@/assets/IceBall.svg">
-                        <div class="ice-ball-text ice-ball-td-text">马什梅耶</div>
-                        <div class="ice-ball-text ice-ball-td-text">守门员</div>
+                        <div class="ice-ball-text ice-ball-td-text  ice-ball-td-text-box">{{i.AthleteName}}</div>
+                        <div class="ice-ball-text ice-ball-td-text">{{i.Position}}</div>
                     </div>
                 </div>
             </div>
             <div class="ice-ball-card ice-ball-score">
                 <div class="ice-ball-card ice-ball-score-main">
-                    <img class="ice-ball-score-main-home-img"  src="@/assets/CAN.png" >
-                    <div class="ice-ball-text ice-ball-score-main-home-text">俄罗斯奥运队</div>
-                    <div class="ice-ball-text ice-ball-score-main-score-text ice-ball-score-main-score-home">15</div>
+                    <img class="ice-ball-score-main-home-img"  :src="['../static/assets/'+schedule.homecode+'.png']" >
+                    <div class="ice-ball-text ice-ball-score-main-home-text">{{schedule.homename}}</div>
+                    <div class="ice-ball-text ice-ball-score-main-score-text ice-ball-score-main-score-home">{{schedule.homescore}}</div>
                     <div class="ice-ball-text ice-ball-score-main-score-text">:</div>
-                    <div class="ice-ball-text ice-ball-score-main-score-text ice-ball-score-main-score-any">15</div>
-                    <img src="@/assets/ROC.png" class="ice-ball-score-main-any-img">
-                    <div class="ice-ball-text ice-ball-score-main-any-text">俄罗斯奥运队</div>
+                    <div class="ice-ball-text ice-ball-score-main-score-text ice-ball-score-main-score-any">{{schedule.awayscore}}</div>
+                    <img :src="['../static/assets/'+schedule.awaycode+'.png']" class="ice-ball-score-main-any-img">
+                    <div class="ice-ball-text ice-ball-score-main-any-text">{{schedule.awayname}}</div>
                 </div>
                  <div class="ice-ball-card ice-ball-score-second">
                     <div class="ice-ball-card ice-ball-score-second-title">
@@ -49,17 +49,29 @@
                             <div class="ice-ball-text ice-ball-score-text">点球</div>
                             <div class="ice-ball-text ice-ball-score-text">总比分</div>
                         </div>
-                        <div class="ice-ball-score-second-td"  v-for="i in count=2" :key="i">
+                        <div class="ice-ball-score-second-td">
                             <div class="ice-ball-text ice-ball-score-text">
-                                <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text ice-ball-score-td-country">俄罗斯奥运队</div>
-                                <img src="@/assets/ROC.png" class="ice-ball-score-second-td-img">
+                                <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text ice-ball-score-td-country">{{schedule.homename}}</div>
+                                <img :src="['../static/assets/'+schedule.homecode+'.png']" class="ice-ball-score-second-td-img">
                             </div>
-                            <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text ice-ball-score-td-1">2</div>
-                            <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text ice-ball-score-td-2">2</div>
-                            <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text ice-ball-score-td-3">1</div>
+                            <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text ice-ball-score-td-1">{{people[0].cards.periods.period[0].HomePeriodScore}}</div>
+                            <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text ice-ball-score-td-2">{{people[0].cards.periods.period[1].HomePeriodScore}}</div>
+                            <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text ice-ball-score-td-3">{{people[0].cards.periods.period[2].HomePeriodScore}}</div>
                             <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text"></div>
                             <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text"></div>
-                            <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text ice-ball-score-td-total">5</div>
+                            <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text ice-ball-score-td-total">{{schedule.homescore}}</div>
+                        </div>
+                        <div class="ice-ball-score-second-td">
+                            <div class="ice-ball-text ice-ball-score-text">
+                                <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text ice-ball-score-td-country">{{schedule.awayname}}</div>
+                                <img :src="['../static/assets/'+schedule.awaycode+'.png']" class="ice-ball-score-second-td-img">
+                            </div>
+                            <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text ice-ball-score-td-1">{{people[0].cards.periods.period[0].AwayPeriodScore}}</div>
+                            <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text ice-ball-score-td-2">{{people[0].cards.periods.period[1].AwayPeriodScore}}</div>
+                            <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text ice-ball-score-td-3">{{people[0].cards.periods.period[2].AwayPeriodScore}}</div>
+                            <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text"></div>
+                            <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text"></div>
+                            <div class="ice-ball-text ice-ball-score-text ice-ball-score-second-td-text ice-ball-score-td-total">{{schedule.awayscore}}</div>
                         </div>
                     </div>
                 </div>
@@ -85,11 +97,11 @@
                         <div class="ice-ball-text ice-ball-th-text">姓名/代表队</div>
                         <div class="ice-ball-text ice-ball-th-text">位置</div>
                     </div>
-                    <div class="ice-ball-td" v-for="i in count" :key="i">
-                        <div class="ice-ball-text ice-ball-td-text">38</div>
+                    <div class="ice-ball-td" v-for="i in people[0].cards.data[1].AthleteList" :key="i">
+                       <div class="ice-ball-text ice-ball-td-text">{{i.Bib}}</div>
                         <img class="ice-ball-td-img" src="@/assets/IceBall.svg">
-                        <div class="ice-ball-text ice-ball-td-text">马什梅耶</div>
-                        <div class="ice-ball-text ice-ball-td-text">守门员</div>
+                        <div class="ice-ball-text ice-ball-td-text  ice-ball-td-text-box">{{i.AthleteName}}</div>
+                        <div class="ice-ball-text ice-ball-td-text">{{i.Position}}</div>
                     </div>
                 </div>
             </div>
@@ -98,20 +110,47 @@
 </template>
 <script>
 import Graph from './components/graph';
+import { getUrlParam } from '@/api/getUrlParam';
+import { getSchedule } from '@/api/ice-ball';
+import { getPeople } from '@/api/ice-ball';
 export default{
     data() {
         return {
-            count:20
+            schedule:{},
+            people:{},
         }
+    },
+    mounted(){
+        console.log(getUrlParam("documentcode"))
+        this.initData(getUrlParam("documentcode"))
     },
     components:{
         Graph
     },
     methods:{
+        initData(str){
+        this.item=str
+        var t=getSchedule(str)
+        console.log(t)
+        t.then((result)=>{
+        console.log(result)
+        this.schedule=result.data
+       })
+       t=getPeople(str)
+        console.log(t)
+        t.then((result)=>{
+        console.log(result)
+        this.people=result.data.dataSourceList
+       })
+      }
     }
 }
 </script>
 <style scoped>
+.ice-ball-score-main-any-text{
+    position: relative;
+    left: 200px;
+}
 .ice-ball-container{
     position: absolute;
     top: 55px;
@@ -243,7 +282,7 @@ export default{
     left: 2px;
     color:#4589D6;
     font-family: "黑体";
-    font-size: 18px;
+    font-size: 15px;
     margin: 0 1px;
 }
 .ice-ball-td{
@@ -263,6 +302,14 @@ export default{
     top: 0;
     font-size: 16px;
     margin: 0 1px;
+}
+.ice-ball-td-text-box{
+    overflow-x: hidden;
+    position: relative;
+    top:5px;
+    text-overflow: clip;
+    white-space: nowrap;
+    width: 32px;
 }
 .ice-ball-td-img{
     position: relative;
@@ -299,12 +346,13 @@ export default{
 .ice-ball-score-main-home-text{
     position: relative;
     top:10px;
-    left: -80px;
+    left: -65px;
 }
 .ice-ball-score-main-any-text{
     position: relative;
-    top:10px;
-    left: 10px;
+    width: 200px;
+    top: 10px;
+    left: 45px;
 }
 .ice-ball-score-main-score-text{
     position: absolute;
@@ -344,6 +392,9 @@ export default{
     left: 240px;
     font-size: 30px;
     letter-spacing: 15px;
+}
+.ice-ball-score-td-country{
+    width: 85px;
 }
 .ice-ball-score-second-th{
     position: relative;

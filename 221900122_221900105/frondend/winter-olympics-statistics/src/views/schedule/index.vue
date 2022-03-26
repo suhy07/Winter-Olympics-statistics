@@ -81,7 +81,11 @@
                         prop="url"
                         label="数据"
                     >
-                    <span>详细数据</span>
+ <template slot-scope="scope">
+        <el-button
+          size="mini"
+          @click="test(scope.$index, scope.row)">详细赛况</el-button>
+      </template>
                     </el-table-column>
                 </el-table>
             </div>
@@ -208,7 +212,12 @@ export default{
             }else{
               
             }
+        },test(index,row ){
+            console.log(index)
+            console.log(row)
+            this.$router.push('/detail/ice-ball?documentcode=123')
         }
+        
     }
 }
 </script>
