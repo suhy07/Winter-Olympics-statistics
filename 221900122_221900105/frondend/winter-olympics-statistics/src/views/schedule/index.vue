@@ -9,7 +9,8 @@
                     v-model="date"
                     placeholder="请选择日期"
                     :clearable="true"
-                    @change="search">
+                    @change="search"
+                    @clear="search">
                     <el-option
                         v-for="item in dateOptions"
                         :key="item.value"
@@ -21,7 +22,8 @@
                     v-model="item"
                     placeholder="请选择大项"
                     :clearable="true"
-                    @change="search">
+                    @change="search"
+                    @clear="search">
                     <el-option
                         v-for="item in itemOptions"
                         :key="item"
@@ -33,7 +35,8 @@
                     v-model="place"
                     placeholder="请选择场馆"
                     :clearable="true"
-                    @change="search">
+                    @change="search"
+                    @clear="search">
                     <el-option
                         v-for="item in placeOptions"
                         :key="item"
@@ -96,6 +99,7 @@
 import  {getScheduleByDate} from "@/api/schedule"
 import {getScheduleByPlace} from "@/api/schedule"
 import {getScheduleByItem} from "@/api/schedule"
+import { getScheduleBySearch} from "@/api/schedule"
 export default{
     data() {
         return {
@@ -115,6 +119,9 @@ export default{
                     value:'04'
                 },
                 {   label:'02月05日',
+                    value:'05'
+                },
+                {   label:'02月06日',
                     value:'06'
                 },
                 {   label:'02月07日',
@@ -163,7 +170,7 @@ export default{
             itemOptions:['高山滑雪','雪车','雪橇','闭幕式','钢架雪车','速度滑冰','跳台滑雪','越野滑雪','花样滑冰','自由式滑雪','短道速滑'
             ,'开幕式','单板滑雪','北欧两项','冰球','冰壶','冬季两项'],
             placeOptions:['首钢滑雪大跳台','首都体育馆','国家高山滑雪中心','国家雪车雪橇中心','国家速滑馆','国家跳台滑雪中心','国家越野滑雪中心'
-            ,'国家游泳中心','国家冬季两项中心','国家体育馆','五棵松体育中心','云顶滑雪公园']
+            ,'国家游泳中心','国家冬季两项中心','国家体育馆','五棵松体育中心','云顶滑雪公园','国家体育场']
 
         }
     },
@@ -198,20 +205,36 @@ export default{
         this.tableData=result.detailList
        })
       },
-      search(item){
+        searchDateTable(){
+            if(this.date==null)
+            this.date=''
+            if(this.item==null)
+            this.item=''
+            if(this.place==null)
+            this.place=''
+        var t=getScheduleBySearch(this.date,this.item,this.place)
+        console.log(t)
+        t.then((result)=>{
+        console.log(result)
+        this.tableData=result.detailList
+       })
+      },
+      search(){
           console.log("search")
-          if((this.date==null||this.date=='')&&(this.item==null||this.item=='')){
-              //place
-                this.initPlaceTable(this.place)
-            }else if((this.date==null||this.date=='')&&(this.place==null||this.place=='')){
-                //item
-                this.initItemTable(this.item)
-            }else if((this.item==null||this.item=='')&&(this.place==null||this.place=='')){
-                //date
-                this.initDateTable(this.date)
-            }else{
+        //   if((this.date==null||this.date=='')&&(this.item==null||this.item=='')){
+        //       //place
+        //         this.initPlaceTable(this.place)
+        //     }else if((this.date==null||this.date=='')&&(this.place==null||this.place=='')){
+        //         //item
+        //         this.initItemTable(this.item)
+        //     }else if((this.item==null||this.item=='')&&(this.place==null||this.place=='')){
+        //         //date
+        //         this.initDateTable(this.date)
+        //     }else{
               
-            }
+        //     }
+        this.searchDateTable()
+            
         },test(index,row ){
             console.log(index)
             console.log(row)

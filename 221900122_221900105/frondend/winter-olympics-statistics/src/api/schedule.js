@@ -38,4 +38,18 @@ export async function getScheduleByItem(_item) {
   });
   return data
 }
+export async function getScheduleBySearch(_date,_item,_place) {
 
+    var data=await axios.get('/apis/api/schedule/search',{
+        params:{
+            date:_date,
+            item:_item,
+            place:_place
+        }
+    }).then(function(res){
+        return res.data
+    }).catch(function (error) {
+        console.log(error);
+    });
+    return data
+  }
