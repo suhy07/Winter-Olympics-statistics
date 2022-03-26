@@ -163,17 +163,33 @@ public class ScheduleController {
 
 //4.向数据库发sql
             String sql=null;
-            if(item==null)
+            if( (date==null||date=="")  && (place ==null||place =="") && (item ==null|| item=="") )
+            {
+                sql="select * from detail";
+            }
+            else if((date==null||date=="") && (item ==null|| item==""))
+            {
+                sql="select * from detail where venuename= "+"'"+place+"'";
+            }
+            else if((date==null||date=="") &&(place ==null||place ==""))
+            {
+                sql="select * from detail where itemcodename= "+"'"+item+"'";
+            }
+            else if((item ==null|| item=="") && (place ==null||place ==""))
+            {
+                sql ="select * from detail where startdatecn >="+"'"+aimdate+"'"+"and startdatecn<="+"'"+aimdate1+"'";
+            }
+            else if((item ==null|| item==""))
             {
                 sql ="select * from detail where startdatecn >="+"'"+aimdate+"'"+"and startdatecn<="+"'"+aimdate1+"'" +" and venuename="+"'"+place+"'";
 
             }
-            if(place==null)
+            else if((place ==null||place ==""))
             {
                 sql ="select * from detail where startdatecn >="+"'"+aimdate+"'"+"and startdatecn<="+"'"+aimdate1+"'"
                         +" and itemcodename="+"'"+item+"'";
             }
-            if(date==null)
+            else if((date==null||date==""))
             {
                 sql ="select * from detail where  itemcodename="+"'"+item+"'"+" and venuename="+"'"+place+"'";
 
