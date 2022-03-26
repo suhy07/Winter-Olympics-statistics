@@ -215,7 +215,7 @@ export default{
         },test(index,row ){
             console.log(index)
             console.log(row)
-            this.$router.push('/detail/ice-ball?documentcode=123')
+            this.$router.push('/detail/ice-ball?documentcode='+row.documentcode)
         }
         
     }

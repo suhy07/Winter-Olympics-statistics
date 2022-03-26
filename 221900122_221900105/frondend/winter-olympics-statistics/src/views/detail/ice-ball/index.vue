@@ -340,19 +340,19 @@ export default{
     border: #F2F2F2;
     border-style: solid;
     top:20px;
-    left: 150px;
+    left: 215px;
     height: 150px;
 }
 .ice-ball-score-main-home-text{
     position: relative;
     top:10px;
-    left: -65px;
+    left: -50px;
 }
 .ice-ball-score-main-any-text{
     position: relative;
     width: 200px;
     top: 10px;
-    left: 45px;
+    left: 115px;
 }
 .ice-ball-score-main-score-text{
     position: absolute;

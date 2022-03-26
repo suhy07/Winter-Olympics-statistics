@@ -22,6 +22,7 @@
                     <div class=" total-text-box total-text total-list-text total-list-text-bronze">{{i.bronze}}</div>
                     <div class=" total-text-box total-text total-list-text">{{i.count}}</div>
                 </div>
+                <div class="total-card hightlight"></div>
             </div>
         </div>
     </div>
@@ -51,6 +52,7 @@ export default{
 }
 </script>
 <style scoped>
+
 .total-container{
     position: absolute;
     top: 55px;
@@ -63,6 +65,13 @@ export default{
     box-shadow: 0px 0px 10px rgb(170 170 170 / 35%);
     border-style: dotted;
     border-color: #F2F2F2;
+}
+.hightlight{
+    position: relative;
+    top:-1470px;
+    height: 40px;
+    background:  rgb(254 230 230 / 60%);
+    box-shadow: none;
 }
 .total-text{
     display: inline-block;
