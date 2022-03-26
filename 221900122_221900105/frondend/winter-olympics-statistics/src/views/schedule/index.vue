@@ -5,38 +5,40 @@
                 <div class="schedule-text">每日赛程</div>
             </div>
             <div class="schedule-select">
-                <el-select v-model="value1" multiple placeholder="请选择日期">
+                <el-select
+                    v-model="date"
+                    placeholder="请选择日期"
+                    :clearable="true"
+                    @change="search">
                     <el-option
-                        v-for="item in options"
+                        v-for="item in dateOptions"
                         :key="item.value"
                         :label="item.label"
                         :value="item.value">
                     </el-option>
                 </el-select>
                 <el-select
-                    v-model="value2"
-                    multiple
-                    collapse-tags
-                    style="margin-left: 20px;"
-                    placeholder="请选择大项">
+                    v-model="item"
+                    placeholder="请选择大项"
+                    :clearable="true"
+                    @change="search">
                     <el-option
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
+                        v-for="item in itemOptions"
+                        :key="item"
+                        :label="item"
+                        :value="item">
                     </el-option>
                 </el-select>
                 <el-select
-                    v-model="value2"
-                    multiple
-                    collapse-tags
-                    style="margin-left: 20px;"
-                    placeholder="请选择场馆">
+                    v-model="place"
+                    placeholder="请选择场馆"
+                    :clearable="true"
+                    @change="search">
                     <el-option
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
+                        v-for="item in placeOptions"
+                        :key="item"
+                        :label="item"
+                        :value="item">
                     </el-option>
                 </el-select>
             </div>
@@ -44,33 +46,34 @@
                 <el-table
                     :data="tableData"
                     style="width: 100%"
-                    :default-sort = "{prop: 'time', order: 'descending'}">
+                    aline='center'
+                    :default-sort = "{prop: 'startdatecn', order: 'descending'}">
                     <el-table-column
-                        prop="time"
+                        prop="startdatecn"
                         label="时间"
                         sortable
                         width="180"
                         >
                     </el-table-column>
                     <el-table-column
-                        prop="major"
+                        prop="itemcodename"
                         label="大项"
                         sortable
                         width="180"
                         >
                     </el-table-column>
                     <el-table-column
-                        prop="match"
+                        prop="title"
                         label="比赛"
                         >
                     </el-table-column>
                     <el-table-column
-                        prop="venue"
+                        prop="venuename"
                         label="场馆"
                         >
                     </el-table-column>
                     <el-table-column
-                        prop="status"
+                        prop="statusname"
                         label="比赛状态"
                     >
                     </el-table-column>
@@ -78,6 +81,7 @@
                         prop="url"
                         label="数据"
                     >
+                    <span>详细数据</span>
                     </el-table-column>
                 </el-table>
             </div>
@@ -85,128 +89,126 @@
     </div>
 </template>
 <script>
+import  {getScheduleByDate} from "@/api/schedule"
+import {getScheduleByPlace} from "@/api/schedule"
+import {getScheduleByItem} from "@/api/schedule"
 export default{
     data() {
         return {
-            tableData: [{
-                time: '11日09:05',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            }, {
-                time: '11日09:05',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            }, {
-                time: '11日16:40',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            }, {
-                time: '11日20:01',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            },{
-                time: '11日09:05',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            }, {
-                time: '11日09:05',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            }, {
-                time: '11日16:40',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            }, {
-                time: '11日20:01',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            },{
-                time: '11日09:05',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            }, {
-                time: '11日09:05',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            }, {
-                time: '11日16:40',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            }, {
-                time: '11日20:01',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            },{
-                time: '11日09:05',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            }, {
-                time: '11日09:05',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            }, {
-                time: '11日16:40',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            }, {
-                time: '11日20:01',
-                major: '王小虎',
-                match: '男子冰壶循环赛第3轮 瑞士6:3俄罗斯奥运队',
-                venue: '国家游泳中心',
-                status:'已结束',
-                url:'成绩公报'
-            }]
+            date:null,
+            item:'冰球',
+            place:null,
+            tableData: [],
+            dateOptions:[
+                { 
+                    label:'02月02日',
+                    value:'02'
+                },
+                {   label:'02月03日',
+                    value:'03'
+                },
+                {   label:'02月04日',
+                    value:'04'
+                },
+                {   label:'02月05日',
+                    value:'06'
+                },
+                {   label:'02月07日',
+                    value:'07'
+                },
+                {   label:'02月08日',
+                    value:'08'
+                },
+                {   label:'02月09日',
+                    value:'09'
+                },
+                {   label:'02月10日',
+                    value:'10'
+                },
+                {   label:'02月11日',
+                    value:'11'
+                },
+                {   label:'02月12日',
+                    value:'12'
+                },
+                {   label:'02月13日',
+                    value:'13'
+                },
+                {   label:'02月14日',
+                    value:'14'
+                },
+                {   label:'02月15日',
+                    value:'15'
+                },
+                {   label:'02月16日',
+                    value:'16'
+                },
+                {   label:'02月17日',
+                    value:'17'
+                },
+                {   label:'02月18日',
+                    value:'18'
+                },
+                {   label:'02月19日',
+                    value:'19'
+                },
+                {   label:'02月20日',
+                    value:'20'
+                },
+                ],
+            itemOptions:['高山滑雪','雪车','雪橇','闭幕式','钢架雪车','速度滑冰','跳台滑雪','越野滑雪','花样滑冰','自由式滑雪','短道速滑'
+            ,'开幕式','单板滑雪','北欧两项','冰球','冰壶','冬季两项'],
+            placeOptions:['首钢滑雪大跳台','首都体育馆','国家高山滑雪中心','国家雪车雪橇中心','国家速滑馆','国家跳台滑雪中心','国家越野滑雪中心'
+            ,'国家游泳中心','国家冬季两项中心','国家体育馆','五棵松体育中心','云顶滑雪公园']
+
         }
     },
-    methods:{
-           formatter(row, column) {
-        return row.address;
-      }
+     mounted(){
+         this.initItemTable('冰球')
+    },
+    methods: {
+        initItemTable(str){
+        this.item=str
+        var t=getScheduleByItem(str)
+        console.log(t)
+        t.then((result)=>{
+        console.log(result)
+        this.tableData=result.detailList
+       })
+      },
+        initPlaceTable(str){
+        this.place=str
+        var t=getScheduleByPlace(str)
+        console.log(t)
+        t.then((result)=>{
+        console.log(result)
+        this.tableData=result.detailList
+       })
+      },
+        initDateTable(str){
+        this.date=str
+        var t=getScheduleByDate(str)
+        console.log(t)
+        t.then((result)=>{
+        console.log(result)
+        this.tableData=result.detailList
+       })
+      },
+      search(item){
+          console.log("search")
+          if((this.date==null||this.date=='')&&(this.item==null||this.item=='')){
+              //place
+                this.initPlaceTable(this.place)
+            }else if((this.date==null||this.date=='')&&(this.place==null||this.place=='')){
+                //item
+                this.initItemTable(this.item)
+            }else if((this.item==null||this.item=='')&&(this.place==null||this.place=='')){
+                //date
+                this.initDateTable(this.date)
+            }else{
+              
+            }
+        }
     }
 }
 </script>
@@ -214,7 +216,7 @@ export default{
 .schedule-container{
     position: absolute;
     top: 55px;
-    width:80.3%;
+    width:1200px;
 }
 .schedule-card{
     background-color: rgba(255, 255, 255, 1);
