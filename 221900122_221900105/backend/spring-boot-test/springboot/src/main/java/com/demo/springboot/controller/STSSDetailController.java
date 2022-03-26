@@ -88,7 +88,19 @@ public class STSSDetailController {
 
 
 
-        System.out.print(result);
+        ////
+        int first= result.indexOf('(');
+
+        StringBuffer s1=new StringBuffer(result);
+        StringBuffer s2=new StringBuffer();
+        s2=s1.replace(0,first+1,"");
+        String s3=s2.toString();
+        int last=s3.lastIndexOf(';');
+        StringBuffer s4=new StringBuffer(s3);
+        s2 = s4.replace(last-1,last+1,"");
+        result = s2.toString();
+
+        ////
 
         return result;
     }
@@ -163,7 +175,19 @@ public class STSSDetailController {
 
 
 
-        System.out.print(result);
+        ////
+        int first= result.indexOf('(');
+
+        StringBuffer s1=new StringBuffer(result);
+        StringBuffer s2=new StringBuffer();
+        s2=s1.replace(0,first+1,"");
+        String s3=s2.toString();
+        int last=s3.lastIndexOf(';');
+        StringBuffer s4=new StringBuffer(s3);
+        s2 = s4.replace(last-1,last+1,"");
+        result = s2.toString();
+
+        ////
 
         return result;
     }
@@ -237,8 +261,19 @@ public class STSSDetailController {
 
 
 
+        ////
+        int first= result.indexOf('(');
 
-        System.out.print(result);
+        StringBuffer s1=new StringBuffer(result);
+        StringBuffer s2=new StringBuffer();
+        s2=s1.replace(0,first+1,"");
+        String s3=s2.toString();
+        int last=s3.lastIndexOf(';');
+        StringBuffer s4=new StringBuffer(s3);
+        s2 = s4.replace(last-1,last+1,"");
+        result = s2.toString();
+
+        ////
 
         return result;
     }
