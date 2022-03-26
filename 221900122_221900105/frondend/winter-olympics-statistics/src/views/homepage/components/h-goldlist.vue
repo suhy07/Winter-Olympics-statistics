@@ -48,8 +48,7 @@ import {getMedalList} from "@/api/medal";
           return a.rank-b.rank
         })
        })
-
-    }
+      }
     }
   }
 </script>

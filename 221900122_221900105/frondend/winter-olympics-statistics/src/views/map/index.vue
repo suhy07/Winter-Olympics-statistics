@@ -13,7 +13,6 @@ import BaseMap from '@/components/base-map'
 export default{
     data() {
         return {
-            count:25
         }
     },
     components: {
@@ -25,7 +24,7 @@ export default{
 .map-container{
     position: absolute;
     top: 55px;
-    width:80.3%;
+    width:1200px;
 }
 .map-card{
     background-color: rgba(255, 255, 255, 1);
