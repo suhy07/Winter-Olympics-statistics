@@ -3,7 +3,6 @@
       <el-row>
         <el-col :span="2">
             <img class="nav-img nav-img1" src="@/assets/北京2022.png">
-            <img class="head-img nav-img2" src="@/assets/竖线.png">
         </el-col>
         <el-col :span="22">
             <div class="nav-text">
